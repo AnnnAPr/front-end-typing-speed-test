@@ -82,7 +82,7 @@ const App = () => {
       setListOfSamples(response.data)
     })
     .catch((error) => console.log(error.data))
-  }, [isOpenML])
+  }, [])
 
   const restart = () => { 
     axios
@@ -90,14 +90,14 @@ const App = () => {
     .then((response) => {
       let randNumber = Math.floor(Math.random() * response.data.length);
       const obj = response.data[randNumber]
-      setId(obj._id)
       setSample(obj.text)
+      setId(obj._id)
+      focusInput()
       setUserInput("")
       setTimerActive(false)
       setKey(prevKey => prevKey + 1)
       setIsDisabled(false)
       setActiveWordIndex(0)
-      focusInput()
       setCorrectWordArray([])
       setIsOpen(false)
       setIsOpenEndModal(false)
