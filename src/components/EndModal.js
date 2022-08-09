@@ -1,11 +1,23 @@
 import React from "react";
+import { useState } from "react";
 import "./EndModal.css"
 import turtle from "../images/turtle.jpg"
 // import otter from "../images/otter.jpg"
 import whale from "../images/whale.jpg"
 import shark from "../images/shark.jpg"
 
-const EndModal = ({isOpenEndModal, saveScore, id, correctWords, restart, allWords, focusInput}) => {
+const EndModal = ({isOpenEndModal, saveScore, id, correctWords, restart, allWords, focusInput, addNameScore}) => {
+  const [newName, setNewName] = useState({name: ''});
+  console.log("New name", newName)
+  console.log("Scores", correctWords)
+
+  const handleChange = (event) => {setNewName({name: event.target.value})}
+
+  const addName = (e) => {
+    e.preventDefault();
+    addNameScore(id, newName, correctWords)
+    setNewName({name: ''})
+  }
 
   let img = () => {
     if (correctWords < 4) {
@@ -41,34 +53,28 @@ const EndModal = ({isOpenEndModal, saveScore, id, correctWords, restart, allWord
                   </div>
                   <p>Your typing speed is <b>{correctWords}</b> correct words/min</p>
                   <p>Your accuracy is <b>{Math.round((correctWords / allWords) * 100) || 0}</b>%</p>
-                  {/* <form>
+                  
+                  <form onSubmit={addName}>
                     <div class="form-group">
-                      <label for="exampleInputEmail1">Your name</label>
-                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter your name" />
-                      <small id="emailHelp" class="form-text text-muted">Form is active if scores not zero</small>
-                    </div>
-                  </form> */}
-                  <form class="row g-3">
-                    <div class="col-auto">
-                      <label for="staticEmail2" class="visually-hidden">Your name</label>
-                      <input type="text" readonly class="form-control-plaintext" id="staticEmail2" value="Your name"/>
-                    </div>
-                    <div class="col-auto">
-                      <label for="inputPassword2" class="visually-hidden">Name</label>
-                      <input type="password" class="form-control" id="inputPassword2" placeholder="TOTOT"/>
-                    </div>
-                    <div class="col-auto">
-                      <button type="submit" class="btn btn-primary mb-3">Save my result</button>
+                      <label for="name">Enter your name to save result</label>
+                      <input type="text" class="form-control w-50" id="name" placeholder={correctWords === 0 ? "not active" : "Name"}
+                            disabled={correctWords === 0 ? true : false}
+                            maxLength={10} required
+                            value={newName.name}
+                            onChange={handleChange}
+                      />
+                      <small class="form-text text-muted">Form is active if correct words not zero</small>
+                      <input type="submit" value="Save my result" disabled={correctWords===0}/>
                     </div>
                   </form>
-                  <div className="btnSave">
+                  {/* <div className="btnSave">
                     <button type="button" className="btn btn-secondary"
                           onClick={() => saveScore(id)}
                           disabled={correctWords===0}
                     >
                       Save my result
                     </button>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

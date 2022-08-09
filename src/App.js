@@ -154,6 +154,16 @@ const App = () => {
     openModal()
   }
 
+  const addNameScore = (id, name, score) => {
+    axios
+    .patch(URL + "samples/" + id + "/scores", {name: name.name, score: {"score": score}})
+    .then()
+    .catch(error => console.log(error.data))
+
+    alert(`Your score ${correctWords} saved`)
+  }
+
+
   const saveScore = (id) => {
     axios
     .patch(URL + "samples/" + id + "/scores", {score: correctWords})
@@ -325,6 +335,8 @@ const App = () => {
       <EndModal closeEndModal={closeEndModal} isOpenEndModal={isOpenEndModal}
                 saveScore={saveScore} id={id} correctWords={correctWords}
                 restart={restart} allWords={allWords} focusInput={focusInput}
+                inputElement={inputElement}
+                addNameScore={addNameScore}
       /> 
       
       
