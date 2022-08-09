@@ -6,12 +6,12 @@ import "./ModalList.css";
 const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeModalListOutside, finalLabels}) => {
   const chart = sample => {
     const scoreFrequency = {}
-    sample.scores.forEach(data => {
-      scoreFrequency[data.score] = (scoreFrequency[data.score] || 0) + 1
-    })
-    // sample.scores.forEach(score => {
-    //   scoreFrequency[score] = (scoreFrequency[score] || 0) + 1
+    // sample.scores.forEach(data => {
+    //   scoreFrequency[data.score] = (scoreFrequency[data.score] || 0) + 1
     // })
+    sample.scores.forEach(score => {
+      scoreFrequency[score] = (scoreFrequency[score] || 0) + 1
+    })
 
     const labelData = finalLabels(Object.keys(scoreFrequency))
 

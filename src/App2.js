@@ -12,14 +12,14 @@ import Modal from "./components/Modal"
 import ModalList from "./components/ModalList";
 import EndModal from "./components/EndModal";
 import cat from "./images/cat1.jpg"
-import Chart from "chart.js/auto";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
+// import Chart from "chart.js/auto";
+// import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const App = () => {
 
-  const SECONDS = 60
+  const SECONDS = 3
 
-  const URL = process.env.REACT_APP_BACKEND_URL
+  const URL = process.env.REACT_APP_BACKEND_URL1
   const [typeSound] = useSound(boom)
   const [meowSound] = useSound(meow)
   const inputElement = useRef(null);
@@ -41,6 +41,7 @@ const App = () => {
   const [timerActive, setTimerActive] = useState(false);
   const [isDisabled, setIsDisabled] = useState(false)
   const [bestScore, setBestScore] = useState(0)
+  const [bestScoreName, setBestScoreName] = useState("")
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenML, setIsOpenML] = useState(false)
   const [id, setId] = useState("")
@@ -48,6 +49,9 @@ const App = () => {
   const [labels, setLabels] = useState([])
   const [data, setData] = useState([])
   const [isOpenEndModal, setIsOpenEndModal] = useState(false)
+  // console.log("BS", bestScore)
+  // console.log("BN", bestScoreName)
+  
 
   // data for global scores
   const chartData = {
@@ -59,6 +63,7 @@ const App = () => {
         backgroundColor: "#FF5F1F",
         borderColor: "black",
         hoverBackgroundColor: "black",
+        barThickness: 60,
       }
     ],
   }
@@ -82,7 +87,7 @@ const App = () => {
       setListOfSamples(response.data)
     })
     .catch((error) => console.log(error.data))
-  }, [isOpenML])
+  }, [])
 
   const restart = () => { 
     axios
@@ -117,17 +122,20 @@ const App = () => {
     .get(URL + "samples")
     .then(response => {
       const samples = response.data
-      const bestScores = []
-      const allScores = []
+      const allScoresNames = {}
       const allScoresFreq = {}
+      let best;
+      let bestScoreName = ""
       samples.forEach(sample => {
-        let bestScoreBySample = Math.max(...sample.scores)
-        bestScores.push(bestScoreBySample)
-        sample.scores.forEach(score => allScores.push(score))
-        setBestScore(Math.max(...bestScores))
+
+        sample.scores.forEach(data => allScoresNames[data.name] = data.score)
+        best = Math.max(...Object.values(allScoresNames))
+        bestScoreName = Object.keys(allScoresNames).find(key => allScoresNames[key] === best);
+        setBestScore(best)
+        setBestScoreName(bestScoreName)
       })
 
-      allScores.forEach(score => {allScoresFreq[score] = (allScoresFreq[score] || 0) + 1})
+      Object.values(allScoresNames).forEach(score => {allScoresFreq[score] = (allScoresFreq[score] || 0) + 1})
 
       // const finalLabels = []
       // Object.keys(allScoresFreq).forEach(score => finalLabels.push(score.concat(" w/m")))
@@ -236,7 +244,8 @@ const App = () => {
         }}>
 
           <figure class="figure">
-            <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" onMouseEnter={() => {meowPet()}}/>
+            {/* <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" onMouseEnter={() => {meowPet()}}/> */}
+            <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" />
             <figcaption class="figure-caption text-left">***click on me two times and hold to move</figcaption>
           </figure>
         </span>
@@ -302,6 +311,7 @@ const App = () => {
             closeModal={closeModal}
             chartData={chartData}
             focusInput={focusInput}
+            bestScoreName={bestScoreName}
       />
 
       <ModalList isOpenML={isOpenML}
