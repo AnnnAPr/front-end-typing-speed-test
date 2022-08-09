@@ -1,0 +1,14 @@
+.correct {
+    font-weight: bold;
+    color: green;
+}
+
+.incorrect {
+    font-weight: bold;
+    color: rgb(206, 72, 57);
+}
+
+.active {
+    font-weight: bold;
+    font-size:larger;
+}

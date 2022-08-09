@@ -1,0 +1,30 @@
+.mod2 {
+    position: fixed;
+    z-index: 20;
+  /* background: rgb(183, 230, 157); */
+    width: 30%;
+    height: 60%;
+
+  /* Center the modal */
+    top: 50%;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: rgb(241, 168, 31)
+}
+
+p {
+    font-size:x-large;
+}
+
+h2 {
+    text-align: center;
+}
+
+.btnSave {
+    text-align: center;
+}
+
+.img {
+    text-align: center;
+}
+
