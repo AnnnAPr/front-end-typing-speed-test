@@ -158,6 +158,7 @@ const App = () => {
 
   const allSamplesCharts = () => {
     openModalList()
+    // openModal()
 
   }
 
@@ -198,13 +199,20 @@ const App = () => {
   }
 
 
-  const closeModalList = () => {
-    setIsOpenML(false)
-  }
+  // const closeModalList = () => {
+  //   setIsOpenML(false)
+  // }
 
   const closeModalListOutside = e => {
     if (modalRef1.current === e.target) {
-      closeModalList()
+      // closeModalList()
+      closeModal()
+    }
+  }
+
+  const closeModalOutside = e => {
+    if (modalRef.current === e.target) {
+      closeModal()
     }
   }
 
@@ -214,15 +222,7 @@ const App = () => {
 
   const closeModal = () => {
     setIsOpen(false);
-  }
-
-  const closeModalOutside = e => {
-    if (modalRef.current === e.target) {
-      closeModal()
-    }
-  }
-
-  const closeEndModal = () => {
+    setIsOpenML(false);
     setIsOpenEndModal(false)
   }
 
@@ -305,14 +305,14 @@ const App = () => {
       />
 
       <ModalList isOpenML={isOpenML}
-                closeModalList={closeModalList}
                 listOfSamples={listOfSamples}
                 finalLabels={finalLabels}
                 modalRef1={modalRef1}
                 closeModalListOutside={closeModalListOutside}
+                closeModal={closeModal}
       />
 
-      <EndModal closeEndModal={closeEndModal} isOpenEndModal={isOpenEndModal}
+      <EndModal isOpenEndModal={isOpenEndModal}
                 saveScore={saveScore} id={id} correctWords={correctWords}
                 restart={restart} allWords={allWords} focusInput={focusInput}
       /> 
