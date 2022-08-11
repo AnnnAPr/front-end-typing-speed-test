@@ -1,10 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Bar } from "react-chartjs-2";
 import "./BarChart.css";
-import Chart from "chart.js/auto";
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-
-// Chart.register(ChartDataLabels);
+import Chart from "chart.js/auto";  // charts are not shown without this line
 
 const BarChart = ({chartData}) => {
   const options = {
@@ -24,14 +22,6 @@ const BarChart = ({chartData}) => {
         }
       }
     },
-    // plugins: {
-    //   datalabels: {
-    //     labels: {
-    //       title: {},
-    //       value: "w/m"
-    //     }
-    //   }
-    // }
   };
 
   return (
@@ -42,5 +32,9 @@ const BarChart = ({chartData}) => {
   
   )
 }
+
+BarChart.propTypes = {
+  chartData: PropTypes.object.isRequired,
+};
 
 export default BarChart

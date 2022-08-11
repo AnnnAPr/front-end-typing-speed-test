@@ -1,13 +1,5 @@
-
 html {
-  /* background: transparent; */
-  /* background-image: url("./images/orange.jpeg"); */
-  /* background-repeat: no-repeat; */
-  /* background-position: center center; */
-  /* background-size: 100%;  */
-  /* background-size: cover; */
   background-color: orange;
-  /* background-color: #C5E1C5; */
 
 
   /* background: url(images/typing_machine2.jpg) no-repeat center center fixed; 
@@ -23,7 +15,6 @@ html {
 }
 
 h2 {
-  /* color: rgb(235, 239, 243); */
   font-size: 40px;
 }
 
@@ -31,22 +22,13 @@ h1 {
   font-size: 50px;
   font-weight: bolder;
   font-family: 'Courier New', Courier, monospace;
-  /* background-color: rgba(190, 207, 185, 0.5); */
-  /* width: 50%; */
-  /* text-align: center; */
 }
 
 
 .transparency {
-  /* background-color: rgba(191, 191, 191, .1); */
-  /* background-color:rgb(244, 244, 179); */
-  /* background-color: rgba(225, 244, 224, 0.2); */
   width: 100%;
   border-radius: 10px;
-  /* height: 100vh; */
   background: transparent;
-  /* background-image: url("./images/typing_machine.jpg"); */
-  /* background-color: #def3a8; */
 }
 
 .h1 {
@@ -69,7 +51,6 @@ h1 {
 
 .wpm, .accuracy {
   border-radius: 8px;
-  /* background-color: rgb(184, 207, 176); */
   font-size: 20px;
   font-weight: bolder;
   padding: 1%;
@@ -106,7 +87,6 @@ h1 {
 .mod {
   position: fixed;
   z-index: 20;
-  /* background: rgb(183, 230, 157); */
   width: 50%;
   height: 70%;
 
@@ -114,26 +94,22 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translateX(-50%) translateY(-50%);
-  /* background-color: rgb(138, 169, 129); */
   background-color: rgb(241, 168, 31)
 }
 
 .mod-header {
-  /* padding: 10px 20px; */
   display: flex;
   justify-content: space-between;
-  /* background-color: rgb(183, 230, 157); */
 }
 
-/* .mod-h2 {
-  margin: 1rem 0 1rem 1rem;
-  margin-left: 18%;
-} */
+.title {
+  margin-top: 5%;
+  font-size:xx-large;
+}
 
 .close-button {
   border: none;
   background: transparent;
-  /* padding: 10px; */
   cursor: pointer;
   color: rgb(168, 52, 52);
   font-size: 36px;
@@ -168,8 +144,7 @@ h1 {
 	position: absolute;
 }
 
-
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -191,4 +166,4 @@ h1 {
   to {
     transform: rotate(360deg);
   }
-}
+} */
