@@ -15,21 +15,21 @@ const EndModal = ({isOpenEndModal, id, correctWords, restart, allWords, focusInp
   }
 
   let img = () => {
-    if (correctWords < 3) {
+    if (correctWords < 25) {
       return turtle
-    } else if (correctWords >= 3 && correctWords < 6) {
+    } else if (correctWords >= 25 && correctWords < 50) {
       return whale
-    } else if (correctWords >= 6 ) {
+    } else if (correctWords >= 50 ) {
       return shark
     } 
   }
 
   let personality = () => {
-    if (correctWords < 3) {
+    if (correctWords < 25) {
       return "turtle"
-    } else if (correctWords >= 3 && correctWords < 6) {
+    } else if (correctWords >= 25 && correctWords < 50) {
       return "whale"
-    } else if (correctWords >= 6 ) {
+    } else if (correctWords >= 50 ) {
       return "shark"
     } 
   }

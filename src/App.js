@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef } from "react";
 import {useDrag} from "react-use-gesture";
-import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import React from "react"
 import axios from "axios";
@@ -17,7 +16,7 @@ import cat from "./images/cat1.jpg"
 
 const App = () => {
 
-  const SECONDS = 3
+  const SECONDS = 60
 
   // const URL = process.env.REACT_APP_BACKEND_URL1
   const URL = process.env.REACT_APP_BACKEND_URL
@@ -51,22 +50,7 @@ const App = () => {
   const [labels, setLabels] = useState([])
   const [data, setData] = useState([])
   const [isOpenEndModal, setIsOpenEndModal] = useState(false)
-
   const [checked, setChecked] = useState(true)
-  
-  // const chartData = {
-  //   labels: labels,
-  //   datasets: [
-  //     {
-  //       label: "Num of people write",
-  //       data: data,
-  //       backgroundColor: "#FF5F1F",
-  //       borderColor: "black",
-  //       hoverBackgroundColor: "black",
-  //       barThickness: 60,
-  //     }
-  //   ],
-  // }
 
   const correctWords = correctWordArray.filter(Boolean).length
   const allWords = correctWordArray.length
@@ -249,15 +233,13 @@ const App = () => {
   return (
     <div className="transparency" >
       <div className="space">
-        <span {...bingImgPos()} style={{
+        <span {...bingImgPos()} className="pic" style={{
           position: "relative",
           top: imgPos.y,
           left: imgPos.x,
         }}>
-
           <figure class="figure">
             <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" onMouseEnter={() => {meowPet()}}/>
-            {/* <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" /> */}
             <figcaption class="figure-caption text-left">***click on me two times and hold to move</figcaption>
           </figure>
         </span>
@@ -300,7 +282,7 @@ const App = () => {
                         setChecked(!checked);
                         focusInput()
                       }}
-                    >Sound ON/OFF</Button>
+                    >Sound {checked ? "OFF" : "ON"}</Button>
                   </div>
                 </div>
               </span>
