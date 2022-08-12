@@ -1,5 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import {useDrag} from "react-use-gesture";
+import Form from 'react-bootstrap/Form';
+import Button from 'react-bootstrap/Button';
 import React from "react"
 import axios from "axios";
 import Word from "./components/Word";
@@ -49,6 +51,8 @@ const App = () => {
   const [labels, setLabels] = useState([])
   const [data, setData] = useState([])
   const [isOpenEndModal, setIsOpenEndModal] = useState(false)
+
+  const [checked, setChecked] = useState(true)
   
   // const chartData = {
   //   labels: labels,
@@ -195,11 +199,15 @@ const App = () => {
   }
 
   const keyDown = () => {
-    typeSound()
+    if (checked) {
+      typeSound()
+    }
   }
 
   const meowPet = () => {
-    meowSound()
+    if (checked) {
+      meowSound()
+    }
   }
 
   const focusInput = () => {
@@ -248,8 +256,8 @@ const App = () => {
         }}>
 
           <figure class="figure">
-            {/* <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" onMouseEnter={() => {meowPet()}}/> */}
-            <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" />
+            <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" onMouseEnter={() => {meowPet()}}/>
+            {/* <img src={cat} class="figure-img img-fluid rounded boo" alt="cat" /> */}
             <figcaption class="figure-caption text-left">***click on me two times and hold to move</figcaption>
           </figure>
         </span>
@@ -276,15 +284,24 @@ const App = () => {
                 </div>
               </span>
 
+              <div>
               <Timer key={key} setIsDisabled={setIsDisabled} timerActive={timerActive}
                       SECONDS={SECONDS} isOpenEndModal={isOpenEndModal} setIsOpenEndModal={setIsOpenEndModal}/>
-
+              <p className="title">Title: <u>{title}</u></p>
+              </div>
               <span className="accuracy">Accuracy: {Math.round((correctWords / allWords) * 100) || 0} %
                 <div>
                   <button type="button" className="btn btn-secondary" onClick={BestScore}>
                     Best score
                   </button>
-                  <p className="title">Title: <u>{title}</u></p>
+                  <div>
+                    <Button variant={checked ? "primary" : "light"}
+                      onClick={() => {
+                        setChecked(!checked);
+                        focusInput()
+                      }}
+                    >Sound ON/OFF</Button>
+                  </div>
                 </div>
               </span>
           </div>

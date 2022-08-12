@@ -30,6 +30,7 @@ Goal is to create a typing speed test web app so user could check the number of 
 * Save result and user name after test completed
 * Can pet the orange cat and can move it all over the page.
 * Press the key button and get the sound immitating the typing on the old typing machine
+* On/OFF sound using button
 
 ### Main features:
 
@@ -38,6 +39,7 @@ Goal is to create a typing speed test web app so user could check the number of 
 * Incorrect word is a red color
 * At the different range of time timer has different color of circle
 * Pop up modals with bar charts could be closed by clicking "closed" button or by clicking outside of modal
+* At the end of the test the modal component with result and picture will pop up.
 
 
 # Getting Started with Create React App
