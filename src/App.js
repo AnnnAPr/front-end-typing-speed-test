@@ -16,7 +16,7 @@ import cat from "./images/cat1.jpg"
 
 const App = () => {
 
-  const SECONDS = 15
+  const SECONDS = 60
 
   // const URL = process.env.REACT_APP_BACKEND_URL1
   const URL = process.env.REACT_APP_BACKEND_URL
