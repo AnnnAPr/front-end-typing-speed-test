@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import "./EndModal.css"
-import turtle from "../images/turtle.jpg"
+// import turtle from "../images/turtle.jpg"
 import whale from "../images/whale.jpg"
 import shark from "../images/shark.jpg"
+import starfish from "../images/starfish.jpg"
+// import starfish from "../images/starfish.png"
 
 const EndModal = ({isOpenEndModal, id, correctWords, restart, allWords, focusInput, addNameScore}) => {
   const [newName, setNewName] = useState({name: ''});
@@ -15,21 +17,27 @@ const EndModal = ({isOpenEndModal, id, correctWords, restart, allWords, focusInp
   }
 
   let img = () => {
-    if (correctWords < 25) {
-      return turtle
-    } else if (correctWords >= 25 && correctWords < 50) {
+    // if (correctWords < 25) {
+    if (correctWords < 3) {
+      return starfish
+    // } else if (correctWords >= 25 && correctWords < 50) {
+    } else if (correctWords >= 3 && correctWords < 6) {
       return whale
-    } else if (correctWords >= 50 ) {
+    // } else if (correctWords >= 50 ) {
+    } else if (correctWords >= 6 ) {
       return shark
     } 
   }
 
   let personality = () => {
-    if (correctWords < 25) {
-      return "turtle"
-    } else if (correctWords >= 25 && correctWords < 50) {
+    // if (correctWords < 25) {
+      if (correctWords < 3) {
+      return "starfish"
+    // } else if (correctWords >= 25 && correctWords < 50) {
+    } else if (correctWords >= 3 && correctWords < 6) {
       return "whale"
-    } else if (correctWords >= 50 ) {
+    // } else if (correctWords >= 50 ) {
+    } else if (correctWords >= 6 ) {
       return "shark"
     } 
   }

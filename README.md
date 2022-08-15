@@ -11,7 +11,22 @@ There are two branches: main and user. "Main" branch doesn't show user name, "us
 * Database: MongoDB Atlas
 * Deployment: Heroku (backend)
 
-Working with the React JS library:
+## Dependencies:
+
+* react-chartjs-2
+* react-countdown-circle-timer
+* react-use-gesture
+* react-bootstrap
+* bootstrap
+* chart.js
+
+## Installation
+
+* Clone repository
+* Install "yarn": yarn install
+* Start server bt running: yarn start
+
+## Working with the React JS library:
 
 * Sending data to nested components through props
 * Receiving and using props within a component
@@ -40,6 +55,16 @@ Goal is to create a typing speed test web app so user could check the number of 
 * At the different range of time timer has different color of circle
 * Pop up modals with bar charts could be closed by clicking "closed" button or by clicking outside of modal
 * At the end of the test the modal component with result and picture will pop up.
+
+
+
+
+
+
+
+
+
+
 
 
 # Getting Started with Create React App
