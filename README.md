@@ -24,7 +24,7 @@ There are two branches: main and user. "Main" branch doesn't show user name, "us
 
 * Clone repository
 * Install "yarn": yarn install
-* Start server bt running: yarn start
+* Start server by running: yarn start
 
 ## Working with the React JS library:
 
