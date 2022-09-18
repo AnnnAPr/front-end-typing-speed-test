@@ -4,6 +4,10 @@ Typing speed test is a web app allows user to check how many correct words per m
 
 There are two branches: main and user. "Main" branch doesn't show user name, "user" branch does show user name for "best score" feature. Please refer to "user" branch as it has the main functionality. 
 
+## Backend
+
+https://github.com/AnnnAPr/back-end-typing-speed-test
+
 ## Tech stack
 
 * Backend: Node JS and Express JS
