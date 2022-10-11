@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import BarChart from "./BarChart";
 import "./Modal.css";
 import "./ModalList.css";
@@ -6,11 +7,8 @@ import "./ModalList.css";
 const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeModalListOutside, finalLabels, closeModal}) => {
   const chart = sample => {
     const scoreFrequency = {}
-    // sample.scores.forEach(data => {
-    //   scoreFrequency[data.score] = (scoreFrequency[data.score] || 0) + 1
-    // })
-    sample.scores.forEach(score => {
-      scoreFrequency[score] = (scoreFrequency[score] || 0) + 1
+    sample.scores.forEach(data => {
+      scoreFrequency[data.score] = (scoreFrequency[data.score] || 0) + 1
     })
 
     const labelData = finalLabels(Object.keys(scoreFrequency))
@@ -29,15 +27,11 @@ const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeMod
             }
       ]
     }
-    console.log("BAR DATA", barData)
-
     return barData
-
   }
 
-  const chartsList = () => {           
+  const chartsList = () => {        
     const charts = listOfSamples.map(sample => {
-
       const chartData = chart(sample)
       console.log("TITLE", sample.title)
       
@@ -51,7 +45,6 @@ const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeMod
 
   console.log("CHARTS", charts)
   return charts
-
 }
 
   return (
@@ -71,5 +64,13 @@ const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeMod
     </div>
   )
 }
+
+ModalList.propTypes = {
+  isOpenML: PropTypes.bool.isRequired,
+  closeModalListOutside: PropTypes.func.isRequired,
+  listOfSamples: PropTypes.arrayOf(PropTypes.object.isRequired).isRequired,
+  closeModalList: PropTypes.func.isRequired,
+  finalLabels: PropTypes.func.isRequired,
+};
 
 export default ModalList

@@ -1,8 +1,9 @@
 import React from "react";
+import PropTypes from "prop-types";
 import "./Word.css"
 import { memo } from "react";
 
-const Word = ({word, active, correct, rerender}) => {
+const Word = ({word, active, correct}) => {
 
   if (correct === true) {
     return <span className="correct">{word} </span>
@@ -19,5 +20,11 @@ const Word = ({word, active, correct, rerender}) => {
   return <span>{word} </span>
 
 }
+
+Word.propTypes = {
+  word: PropTypes.string.isRequired,
+  active: PropTypes.bool.isRequired,
+  correct: PropTypes.bool.isRequired,
+};
 
 export default memo(Word)
