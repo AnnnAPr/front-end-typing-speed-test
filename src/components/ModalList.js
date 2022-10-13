@@ -4,7 +4,7 @@ import BarChart from "./BarChart";
 import "./Modal.css";
 import "./ModalList.css";
 
-const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeModalListOutside, finalLabels, closeModal}) => {
+const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeModalListOutside, finalLabels}) => {
   const chart = sample => {
     const scoreFrequency = {}
     sample.scores.forEach(data => {
@@ -54,8 +54,7 @@ const ModalList = ({isOpenML, closeModalList, listOfSamples, modalRef1, closeMod
           <>
             <div className="modal-bgr" ref={modalRef1} onClick={closeModalListOutside}>
               <div className="mod1">
-                {/* <button onClick={closeModalList} className="close-button">&times;</button> */}
-                <button onClick={closeModal} className="close-button">&times;</button>
+                <button onClick={closeModalList} className="close-button">&times;</button>
                 {chartsList()}
               </div>
             </div>
